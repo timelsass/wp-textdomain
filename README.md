@@ -22,7 +22,7 @@ $ npm install wp-textdomain --save-dev
 Typical usage is done during a build process for plugins or themes.  This code shows how to add linting on your php files, and output the results to console:
 
 ```js
-const wpTextdomain = require( 'wp-textdomain'
+const wpTextdomain = require( 'wp-textdomain' );
 
 wpTextdomain( '**/*.php', {
 	domain: 'theme-name',
