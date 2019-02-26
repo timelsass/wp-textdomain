@@ -1,6 +1,6 @@
 {
   "name": "wp-textdomain",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lint and fix textdomain and usage in PHP files in plugins and themes.",
   "main": "index.js",
   "repository": "https://github.com/timelsass/wp-textdomain",
