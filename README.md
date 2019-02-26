@@ -6,7 +6,7 @@ Lint and fix textdomain and usage in PHP files in plugins and themes.
 Install with yarn:
 
 ```
-$ yarn add wp-header-search --dev
+$ yarn add wp-textdomain --dev
 ```
 
 OR
@@ -14,14 +14,16 @@ OR
 Install with npm:
 
 ```
-$ npm install wp-header-search --save-dev
+$ npm install wp-textdomain --save-dev
 ```
 
-## Usage
+## Examples
 
 Typical usage is done during a build process for plugins or themes.  This code shows how to add linting on your php files, and output the results to console:
 
 ```js
+const wpTextdomain = require( 'wp-textdomain'
+
 wpTextdomain( '**/*.php', {
 	domain: 'theme-name',
 } );
@@ -51,7 +53,7 @@ wpTextdomain( '**/*.php', {
 
 When using the fix option, only errors found that aren't `kirki` are fixed.  When fixing errors, the first textdomain listed is the one used as the primary textdomain.
 
-## Options
+## Usage
 
 ```js
 const wpTextdomain = require( 'wp-textdomain' );
@@ -61,28 +63,29 @@ wpTextdomain( pattern, options );
 `pattern`: **String** A [glob pattern](https://www.npmjs.com/package/glob) for matching files.
 `options`: **Object** wp-textdomain configuration options.
 
-### domain
+### Options
+#### domain
 **String/Array** Textdomain(s) to lint and fix.
 
 If a string is passed, this will be the textdomain that is used to compare against in linting. When passing an array of textdomains, all are checked against as valid textdomains to be used in a theme or plugin.
 
 When running wp-textdomain with the fix option set, the first textdomain in the array is used as the primary textdomain that is used to replace or be added to gettext calls missing or with alternate textdomains.
 
-### fix
+#### fix
 **Bool** Whether or not to write files with fixes applied.
 
 When using the fix option, errors that are found are fixed using the first textdomain listed.
 
-### engine
+#### engine
 **Object** [php-parser](https://www.npmjs.com/package/php-parser) configuration options.
 
-### missingDomain
+#### missingDomain
 **Bool** Whether or not to perform lints/fixes against gettext methods that are missing textdomains.
 
-### variableDomain
+#### variableDomain
 **Bool** Whether or not to perform lints/fixes against gettext methods that are using a variable instead of a string in the textdomain field.
 
-### keywords
+#### keywords
 **Array** A pattern list of strings containing available gettext methods, and argument positions.
 
 *Example*:
@@ -106,16 +109,16 @@ options.keywords = [
 ];
 ```
 
-### fileOpts
+#### fileOpts
 **Object** Configuration options for calls made to [fs.readFileSync](https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options).
 
-### glob
+#### glob
 **Object** [minimatch/glob](https://www.npmjs.com/package/glob#options) configuration options to pass in.
 
-### force
+#### force
 **Bool** Option to force build fails by exiting process or just warn in console on error.
 
-### logfile
+#### logfile
 **Object** Logfile configuration options.
 - `create` **Bool**
 - `path` **String**
