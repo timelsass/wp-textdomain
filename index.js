@@ -112,6 +112,16 @@ module.exports = ( pattern = '**/*.php', config = {} ) => {
 
 				parensBalance = 0;
 
+			//Look for T_NAME_FULLY_QUALIFIED functions
+			} else if ( token.includes( 'T_NAME_FULLY_QUALIFIED' ) && functions.indexOf( text.slice(1) ) > -1 ){
+				gettext = {
+					name: text.slice(1),
+					line: line,
+					domain: false,
+					argument: 0,
+				};
+				parensBalance = 0;
+
 			//Check for T_CONSTANT_ENCAPSED_STRING - and that we are in the text-domain argument
 			} else if ( token.includes( 'T_CONSTANT_ENCAPSED_STRING' ) && gettext.line && funcDomain[ gettext.name ] === gettext.argument ) {
 
